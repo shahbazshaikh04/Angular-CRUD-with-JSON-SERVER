@@ -1,0 +1,25 @@
+<h1>Employee Details</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employeeData">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name | titlecase }}</td>
+            <td>{{employee.gender | uppercase}}</td>
+            <td>{{employee.dob | date:'mediumDate'}}</td>
+            <td>{{employee.salary | currency:'INR'}}</td>
+            <td>
+                <button type="button" (click)="editEmployee(employee)">Edit</button>
+                <button type="button" (click)="viewEmployee(employee)">Details</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

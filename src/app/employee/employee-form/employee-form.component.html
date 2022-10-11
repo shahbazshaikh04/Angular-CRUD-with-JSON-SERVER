@@ -1,0 +1,40 @@
+<form [formGroup]="empForm" (ngSubmit)="saveEmployee()" >
+    <label for="">Name:</label>
+    <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+    <div *ngIf="FormControlName['name'].invalid && FormControlName['name'].touched || FormControlName['name'].dirty ">
+        <span *ngIf="FormControlName['name'].errors && FormControlName['name'].errors['required']"> this field is
+            required</span>
+        <span *ngIf="FormControlName['name'].errors && FormControlName['name'].errors['pattern']">this field need only
+            charecter</span>
+        <span *ngIf="FormControlName['name'].errors && FormControlName['name'].errors['minlength']">this field need min
+            3 charecter required</span>
+    </div>
+    <br>
+    <label for="">Gender:</label>
+    <input type="text" class="form-control" placeholder="Enter Gender" formControlName="gender">
+    <div *ngIf="FormControlName['gender'].invalid && FormControlName['gender'].touched || FormControlName['gender'].dirty ">
+        <span *ngIf="FormControlName['gender'].errors && FormControlName['gender'].errors['required']"> this field is
+            required</span>
+        <span *ngIf="FormControlName['gender'].errors && FormControlName['gender'].errors['pattern']">this field need only
+            charecter</span>
+    </div>
+
+    <br> <label for="">Dob:</label>
+    <input type="date" class="form-control" placeholder="Enter Dob" formControlName="dob">
+    <div *ngIf="FormControlName['dob'].invalid && FormControlName['dob'].touched || FormControlName['dob'].dirty ">
+        <span *ngIf="FormControlName['dob'].errors && FormControlName['dob'].errors['required']"> this field is
+            required</span>
+    </div>
+    <br> <label for="">Salary:</label>
+    <input type="text" class="form-control" placeholder="Enter Salary" formControlName="salary">
+    <div *ngIf="FormControlName['salary'].invalid && FormControlName['salary'].touched || FormControlName['salary'].dirty ">
+        <span *ngIf="FormControlName['salary'].errors && FormControlName['salary'].errors['required']"> this field is
+            required,</span>
+        <span *ngIf="FormControlName['salary'].errors && FormControlName['salary'].errors['pattern']">this field need only
+            Digit</span>
+    </div>
+    <br>
+    <button type="submit" >Submit</button>
+    <button type="reset" (click)="reset()">Reset</button>
+</form>
+<app-employee-list (edit)="editEmployee($event)" [updatedRecord]="updatedEmployee"></app-employee-list>
